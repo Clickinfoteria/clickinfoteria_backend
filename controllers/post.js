@@ -200,6 +200,10 @@ exports.getPosts =  async (req, res) =>{
   .skip(parseInt(pageNo) * parseInt(limit) )
   .limit(parseInt(limit));
 
+
+    const postCount = await Post.countDocuments()
+
+
   res.json({posts: posts.map((post) => ({
             
     id: post._id,
@@ -208,9 +212,14 @@ exports.getPosts =  async (req, res) =>{
       slug: post.meta, 
        thumbnail: post.thumbnail?.url,
         author: post.author,
+        createdAt: post.createdAt,
+        tags: post.tags,
       
      
-})) })
+})),
+postCount,
+
+})
 
 }
 
