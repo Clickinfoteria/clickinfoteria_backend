@@ -9,6 +9,7 @@ const waitRouter = require('./routers/waitlist')
 const cors = require('cors')
 
 const app = express()
+app.use(cors({origin: true}))
 app.use(express.json())
 // app.use(morgan('dev'));
 app.use('/api/post', postRouter)
