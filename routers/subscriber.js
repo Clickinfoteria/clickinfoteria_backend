@@ -3,7 +3,7 @@ const { subscriberValidator, validate } = require('../middleware/postValidator')
 
 const {createSubscriber, deleteSubscriber, getSubscribers } = require('../controllers/subscriber')
 router.post(
-    '/subscribe',
+    '/create-subscriber',
     // parseData,
     subscriberValidator, 
     validate,
