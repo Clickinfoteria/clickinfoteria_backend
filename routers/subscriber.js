@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { subscriberValidator, validate } = require('../middleware/postValidator');
 
-const {createSubscriber, deleteSubscriber } = require('../controllers/subscriber')
+const {createSubscriber, deleteSubscriber, getSubscribers } = require('../controllers/subscriber')
 router.post(
     '/subscribe',
     // parseData,
@@ -13,5 +13,10 @@ router.post(
     '/:subscriberId',
      deleteSubscriber
     );
+
+    router.get(
+        '/subscribers',
+        getSubscribers
+    )
 
     module.exports = router;
