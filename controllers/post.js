@@ -179,6 +179,9 @@ exports.getFeaturedPosts =  async (req, res) =>{
     .sort({ createdAt: -1 })
     .limit(4)
     .populate('post')
+
+    const featuredCount = await FeaturedPost.countDocuments()
+
     res.json({
         posts: featuredPosts.map(({post}) => ({
             
@@ -190,7 +193,9 @@ exports.getFeaturedPosts =  async (req, res) =>{
                     author: post.author,
                   
                  
-    }))})
+    })),
+    featuredCount,
+})
 
 }
 exports.getPosts =  async (req, res) =>{
