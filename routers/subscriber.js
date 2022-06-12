@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { subscriberValidator, validate } = require('../middleware/postValidator');
+const { subscriberValidator, validate } = require('../middleware/subscriberValidator');
 
 const {createSubscriber, deleteSubscriber, getSubscribers } = require('../controllers/subscriber')
 router.post(

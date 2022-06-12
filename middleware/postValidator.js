@@ -16,10 +16,7 @@ exports.postValidator = [
        return true
     })
 ]
-exports.subscriberValidator = [
-    check('name').trim().not().isEmpty().withMessage('Name title is missing'),
-    check('email').trim().not().isEmpty().withMessage('Email content is missing'),
-]
+
 exports.waiterValidator = [
     check('email').trim().not().isEmpty().withMessage('Email content is missing'),
 ]
