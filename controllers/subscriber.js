@@ -5,11 +5,11 @@ const {isValidObjectId} = require('mongoose')
 exports.createSubscriber = async (req, res) =>{
     const {name, email} = req.body
 
-    const alreadyExists = await Post.findOne({ email })
+    const alreadyExists = await Subscriber.findOne({ email })
 
     if (alreadyExists) return res.status(401).json({ error: 'Subscriber already exists!' })
 
-    const newSubscriber = new Post({ name, email });
+    const newSubscriber = new Subscriber({ name, email });
 
     await newSubscriber.save();
 
@@ -17,16 +17,14 @@ exports.createSubscriber = async (req, res) =>{
         id: newSubscriber._id,
          name,
           email,
-    }
-       
-         });
+    } });
 
 }
 
 exports.deleteSubscriber = async (req, res) => {
     const {subscriberId} = req.params
 
-    if(!isvalidObjectId(subscriberId))
+    if(!isValidObjectId(subscriberId))
     return res.status(401).json({ error: 'Invalid request!'})
     const subscriber = await Subscriber.findById(subscriberId)
     if(!subscriber) 
